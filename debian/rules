@@ -1,0 +1,20 @@
+#!/usr/bin/make -f
+
+
+# git log --abbrev-commit
+
+SOURCEPKG=$(shell dpkg-parsechangelog | sed  -n 's/^Source: \(.*\)/\1/p')
+UPSTREAM=$(shell dpkg-parsechangelog |  sed -n 's/^Version: \(.*\)-[^-]*/\1/p')
+SHA1=$(lastword $(subst ~git, ,$(UPSTREAM)))
+ORIG=${SOURCEPKG}_${UPSTREAM}.orig.tar.gz
+
+get-orig-source:
+	git archive --format=tar $(SHA1) | gzip -9 > ../$(ORIG)
+
+%:
+	dh $@ --with python2 --buildsystem=python_distutils
+
+
+override_dh_auto_clean:
+	dh_auto_clean
+	rm -rf *.egg-info
