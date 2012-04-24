@@ -1,5 +1,5 @@
-openphoto-python (0.1~gitf3683c7-1) unstable; urgency=low
+openphoto-python (0.1~gitccc6e6b-1) unstable; urgency=low
 
   * Initial packaging attempt.
 
- -- Olivier Berger <oberger@ouvaton.org>  Mon, 09 Apr 2012 14:42:49 +0200
+ -- Olivier Berger <oberger@ouvaton.org>  Tue, 24 Apr 2012 22:53:25 +0200
